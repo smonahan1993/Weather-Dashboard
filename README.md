@@ -2,25 +2,11 @@
 
 URL: https://smonahan1993.github.io/Weather-Dashboard/
 
-User Story
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
+This project was for homework 6 of GA Tech's full stack web development bootcamp.
 
-Acceptance Criteria
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
+The assignment criteria was to build a search engine that grabbed data from various cities and populated weather conditions, UV index, forecast etc. for that city. 
 
 Mock-Up
 The following image shows the web application's appearance and functionality:
 
-![image](https://user-images.githubusercontent.com/85653998/128584441-fe8e7db0-8e6a-4012-8c91-4c52e8b7a554.png)
+![image](https://user-images.githubusercontent.com/85653998/128599512-0b632120-b195-460d-84d7-df79110f27da.png)
