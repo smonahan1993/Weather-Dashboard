@@ -12,8 +12,10 @@ console.log(searchButton);
 
 //     cityName.append("<li>" + city + "</li>");
 // }
-
+var windSpeed = $("#wind-speed");
+var uvIndex = $("#uv-index");
 var temp = $("#temperature");
+var humidity = $("#humidity")
 var form = $("#search-city");
 var input = $("#myInput");
 const apiKey = "895b542298f393087953e11563f64657";
@@ -32,6 +34,10 @@ searchButton.click( e => {
     console.log(data.name);
     console.log(data.main.temp *9/5 + 32);
     temp.html(data.main.temp *9/5 + 32);
+    humidity.html(data.main.humidity);
+    windSpeed.html(data.wind.speed);
+
+
 
   })
   .catch(() => {
