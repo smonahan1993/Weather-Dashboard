@@ -32,11 +32,14 @@ console.log(form);
 searchButton.click( e => {
   e.preventDefault();
   const inputVal = input.val();
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
+  var url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
   fetch(url)
   .then(response => response.json())
   .then(data => {
     // do stuff with the data
+    // var lat = data.coord.lat; 
+    // var lon = data.coord.lon;
+    console.log(lat);
     console.log(url);
     console.log(data)
     console.log(data.name);
@@ -46,7 +49,7 @@ searchButton.click( e => {
     humidity.html(data.main.humidity + ' %');
     windSpeed.html(data.wind.speed + ' MPH');
     // uvIndex.html(data.)
-
+    getUV(data.coord.lat,data.coord.lon);
     localStorage.setItem("search",JSON.stringify(searchHistory));
     renderSearchHistory();
 
@@ -70,7 +73,24 @@ searchButton.click( e => {
 
 });
 
+function getUV(lat,lon) {
 
+  var url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    console.log('from git uv', data)
+    uvIndex.html(data.current.uvi);
+    getForecast(data);
+
+  })
+
+}
+
+function getForecast(weather){
+
+  console.log("from getForecast", weather)
+}
 // searchButton.click",function() {
 //   var searchTerm = inputEl.value;
 //   if (!searchTerm) {
