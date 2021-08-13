@@ -1,21 +1,49 @@
 var searchButton = $("#search-button");
 var clearButton = $("#clear-history");
-console.log(searchButton);
+var fDate0 = $("#fDate0");
+var fDate1 = $("#fDate1");
+var fDate2 = $("#fDate2");
+var fDate3 = $("#fDate3");
+var fDate4 = $("#fDate4");
+// var iconcode0 = a.weather[0].icon;
+// var iconcode1 = a.weather[1].icon;
+// var iconcode2 = a.weather[2].icon;
+// var iconcode3 = a.weather[3].icon;
+// var iconcode4 = a.weather[4].icon;
+// var iconurl0 = "http://openweathermap.org/img/w/" + iconcode0 + ".png";
+// var iconurl1 = "http://openweathermap.org/img/w/" + iconcode1 + ".png";
+// var iconurl2 = "http://openweathermap.org/img/w/" + iconcode2 + ".png";
+// var iconurl3 = "http://openweathermap.org/img/w/" + iconcode3 + ".png";
+// var iconurl4 = "http://openweathermap.org/img/w/" + iconcode4 + ".png";
 
-// var apiKey = "b8ecb570e32c2e5042581abd004b71bb";
-
-// // Forloop for persisting the data onto HMTL page
-// for (var i = 0; i < localStorage.length; i++) {
-
-//     var city = localStorage.getItem(i);
-//     // console.log(localStorage.getItem("City"));
-//     var cityName = $(".list-group").addClass("list-group-item");
-
-//     cityName.append("<li>" + city + "</li>");
-// }
+var fImg0 = $("#fImg0");
+var fImg1 = $("#fImg1");
+var fImg2 = $("#fImg2");
+var fImg3 = $("#fImg3");
+var fImg4 = $("#fImg4");
+var fTemp0 = $("#fTemp0");
+var fTemp1 = $("#fTemp1");
+var fTemp2 = $("#fTemp2");
+var fTemp3 = $("#fTemp3");
+var fTemp4 = $("#fTemp4");
+var fHumidity0 = $("#fHumidity0");
+var fHumidity1 = $("#fHumidity1");
+var fHumidity2 = $("#fHumidity2");
+var fHumidity3 = $("#fHumidity3");
+var fHumidity4 = $("#fHumidity4");
+var fWind0 = $("#fWind0");
+var fWind1 = $("#fWind1");
+var fWind2 = $("#fWind2");
+var fWind3 = $("#fWind3");
+var fWind4 = $("#fWind4");
 var historyEl = $("#history");
 let searchHistory = JSON.parse(localStorage.getItem("search")) || []
 var today = moment();
+var day0 = moment().add(1,'days')
+var day1 = moment().add(2,'days')
+var day2 = moment().add(3,'days')
+var day3 = moment().add(4,'days')
+var day4 = moment().add(5,'days')
 var cityName = $("#current-city");
 var windSpeed = $("#wind-speed");
 var uvIndex = $("#uv-index");
@@ -75,7 +103,7 @@ searchButton.click( e => {
 
 function getUV(lat,lon) {
 
-  var url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  var url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
   fetch(url)
   .then(response => response.json())
   .then(data => {
@@ -87,9 +115,42 @@ function getUV(lat,lon) {
 
 }
 
-function getForecast(weather){
-
-  console.log("from getForecast", weather)
+function getForecast(data){
+  var weathericon0= data.daily[0].weather[0].icon;
+  var weathericon1= data.daily[1].weather[0].icon;
+  var weathericon2= data.daily[2].weather[0].icon;
+  var weathericon3= data.daily[3].weather[0].icon;
+  var weathericon4= data.daily[4].weather[0].icon;
+  var iconurl0="https://openweathermap.org/img/wn/"+weathericon0 +"@2x.png";
+  var iconurl1="https://openweathermap.org/img/wn/"+weathericon1 +"@2x.png";
+  var iconurl2="https://openweathermap.org/img/wn/"+weathericon2 +"@2x.png";
+  var iconurl3="https://openweathermap.org/img/wn/"+weathericon3 +"@2x.png";
+  var iconurl4="https://openweathermap.org/img/wn/"+weathericon4 +"@2x.png";
+  fDate0.html(day0.format("MMM Do, YYYY"));
+  fDate1.html(day1.format("MMM Do, YYYY"));
+  fDate2.html(day2.format("MMM Do, YYYY"));
+  fDate3.html(day3.format("MMM Do, YYYY"));
+  fDate4.html(day4.format("MMM Do, YYYY"));
+  fImg0.html("<img src="+iconurl0+">")
+  fImg1.html("<img src="+iconurl1+">")
+  fImg2.html("<img src="+iconurl2+">")
+  fImg3.html("<img src="+iconurl3+">")
+  fImg4.html("<img src="+iconurl4+">")
+  fTemp0.html(data.daily[0].temp.day);
+  fTemp1.html(data.daily[1].temp.day);
+  fTemp2.html(data.daily[2].temp.day);
+  fTemp3.html(data.daily[3].temp.day);
+  fTemp4.html(data.daily[4].temp.day);
+  fHumidity0.html(data.daily[0].humidity);
+  fHumidity1.html(data.daily[1].humidity);
+  fHumidity2.html(data.daily[2].humidity);
+  fHumidity3.html(data.daily[3].humidity);
+  fHumidity4.html(data.daily[4].humidity);
+  fWind0.html(data.daily[0].wind_speed);
+  fWind1.html(data.daily[1].wind_speed);
+  fWind2.html(data.daily[2].wind_speed);
+  fWind3.html(data.daily[3].wind_speed);
+  fWind4.html(data.daily[4].wind_speed);
 }
 // searchButton.click",function() {
 //   var searchTerm = inputEl.value;
