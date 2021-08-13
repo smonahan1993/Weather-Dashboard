@@ -1,21 +1,11 @@
 var searchButton = $("#search-button");
 var clearButton = $("#clear-history");
+var uvBG = $("span#uv-index")
 var fDate0 = $("#fDate0");
 var fDate1 = $("#fDate1");
 var fDate2 = $("#fDate2");
 var fDate3 = $("#fDate3");
 var fDate4 = $("#fDate4");
-// var iconcode0 = a.weather[0].icon;
-// var iconcode1 = a.weather[1].icon;
-// var iconcode2 = a.weather[2].icon;
-// var iconcode3 = a.weather[3].icon;
-// var iconcode4 = a.weather[4].icon;
-// var iconurl0 = "http://openweathermap.org/img/w/" + iconcode0 + ".png";
-// var iconurl1 = "http://openweathermap.org/img/w/" + iconcode1 + ".png";
-// var iconurl2 = "http://openweathermap.org/img/w/" + iconcode2 + ".png";
-// var iconurl3 = "http://openweathermap.org/img/w/" + iconcode3 + ".png";
-// var iconurl4 = "http://openweathermap.org/img/w/" + iconcode4 + ".png";
-
 var fImg0 = $("#fImg0");
 var fImg1 = $("#fImg1");
 var fImg2 = $("#fImg2");
@@ -110,6 +100,17 @@ function getUV(lat,lon) {
     console.log('from git uv', data)
     uvIndex.html(data.current.uvi);
     getForecast(data);
+    
+    console.log(data.current.uvi)
+
+    if (data.current.uvi < 3) {
+      uvBG.css("background-color","green");
+  } else if (data.current.uvi > 2 & data.current.uvi < 6) {
+      uvBG.css("background-color","orange");
+  } else if (data.current.uvi > 6) {
+      uvBG.css("background-color","red");
+      
+  }
 
   })
 
